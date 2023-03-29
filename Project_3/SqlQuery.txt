@@ -1,0 +1,61 @@
+query:- Create the database 
+
+         "create database project_3"
+         
+ query:- create the Engineer table
+        
+        Enid   primary key
+        username unique not null
+        password not null
+        category not null(H- Hardware,  S- Software)
+        
+        
+ """   create table engineer(
+                   Enid  Varchar(5) primary key, 
+                   username varchar(20) unique not null,
+                   password varchar(10) not null,
+                   category varchar(2) not null
+                   ); """
+                   
+                   
+                               
+  create the Employee table++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  
+  
+         empid   primary key auto_increment
+         username  unique not null
+         password not null
+         
+    """   create table employee(
+                 empid int primary key auto_increment,
+                 username Varchar(20) unique not null,
+                 password varchar(10) not null
+                 ); """
+                 
+                 
+ create table for problem+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+                  PId primary key not null,                  
+                  problem_name not null    
+                  category not null(H- Hardware,  S- Software)
+                  pstatus default 0
+                  Enid not null default 0
+                  empid not null            
+                  
+       
+   """   create table problem(
+               Pid int primary key auto_increment,
+               problem_name varchar(40) not null,
+               category varchar(2) not null,
+               pstatus int not null default 0,
+               Enid varchar(5) not null default 0,
+               empid int not null default 0,
+               constraint fk_engid_problem foreign key (Enid) references engineer (Enid),
+               constraint fk_empid_problem foreign key (empid) references employee (empid)
+               ); """"""""""
+                
+                
+  insert into engineer values('001','difho','pedeflcw','s');
+  insert into employee (username,password) values('difho','pedeflcw');
+                  
+                                  
