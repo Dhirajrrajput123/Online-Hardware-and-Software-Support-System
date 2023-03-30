@@ -14,7 +14,6 @@ public class DBUtils {
 		String url=rs.getString("url");
 		String username=rs.getString("username");
 		String password=rs.getString("password");
-		System.out.println(url+" "+ username+" "+password);
 		Connection con=DriverManager.getConnection(url, username, password);
 		return con; 
     }
@@ -23,8 +22,11 @@ public class DBUtils {
 		if(con!=null) con.close();
 	}
 	
-	public boolean isRowPresent(ResultSet rs) throws SQLException {
-		if(rs.isBeforeFirst()&&rs.getRow()==0) return true;
+	public static boolean isRowPresent(ResultSet rs) throws SQLException {
+		if(!rs.isBeforeFirst()&&rs.getRow()==0) {
+			return true;
+		}
+		
 		return false;
 	}
 }
