@@ -57,5 +57,10 @@ query:- Create the database
                 
   insert into engineer values('001','difho','pedeflcw','s');
   insert into employee (username,password) values('difho','pedeflcw');
+  
+  
+  
+  add problem into problem table
+               insert into problem (problem_name,category,pstatus,Enid,empid) values ('dc cewr','H',0,'0','7');
                   
                                   
