@@ -3,6 +3,12 @@ package com.project.Ui;
 import java.sql.SQLException;
 
 import com.project.Dao.DBUtils;
+import com.project.Dao.EmployeeDaoImple;
+import com.project.Dao.StaticVariable;
+import com.project.Dto.employeeDtoimple;
+import com.project.Exception.NoresultFound;
+import com.project.Exception.SomethingwentWent;
+
 import java.util.*;
 public class UiMain {
 
@@ -38,10 +44,34 @@ public class UiMain {
 			String employeename=sc.nextLine();
 			System.out.println("enter Enginner password");
 			String password=sc.nextLine();	
+			employeeDtoimple empDto=new employeeDtoimple(employeename, password);
+		
+			EmployeeDaoImple empDao=new EmployeeDaoImple();
+			try {
+				empDao.EmployeeLoginAccout(empDto);
+				System.out.println("Log in successfully");
+//				System.out.println(StaticVariable.employee__Id);
+			} catch (SomethingwentWent | NoresultFound e) {
+				System.out.println(e.getMessage());
+			}
 			EmployeeUi.welcomeEmployee(sc,employeename);
 	}
 		static void registerEmployee(Scanner sc) {
-			System.out.println("you are inside the register ");
+			
+			sc.nextLine();
+			System.out.println("Enter your Name");
+			String username=sc.nextLine();
+			System.out.println("Create your password");
+			String password=sc.nextLine();
+			employeeDtoimple emp=new employeeDtoimple(username, password);
+			
+			EmployeeDaoImple empDao=new EmployeeDaoImple();
+			try {
+				empDao.addEmployee(emp);
+				System.out.println("Register successfully");
+			} catch (SomethingwentWent e) {
+				System.out.println(e.getMessage());			}
+			
 		}
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub

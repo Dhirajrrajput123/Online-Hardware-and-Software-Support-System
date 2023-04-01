@@ -2,6 +2,8 @@ package com.project.Dto;
 
 public interface ProblemDto {
 
+	public int getpID();
+	public void setpID(int pID);
 	public String getProblemName();
 	public void setProblemName(String problemName);
 	public String getCategory();
