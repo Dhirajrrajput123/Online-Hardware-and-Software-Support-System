@@ -2,10 +2,12 @@ package com.project.Ui;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 import com.project.Dao.EngineerDaoImple;
 import com.project.Dao.ProblemDaoImple;
 import com.project.Dto.EngineerDtoImpl;
+import com.project.Dto.EngineerWithNumberOgProblem;
 import com.project.Dto.ProblemDtoImple;
 import com.project.Exception.NoresultFound;
 import com.project.Exception.SomethingwentWent;
@@ -41,6 +43,7 @@ public class AdminUi {
 				   ViewAllRiseProblem();
 				   break;
 			   case 5:
+				   updateProblem(sc);
 				   break;
 			   case 0:
 				   System.out.println("Thanks Dhiraj");
@@ -51,7 +54,26 @@ public class AdminUi {
 			}
 		}while(choice!=0);
 	}
+	public static void updateProblem(Scanner sc) {
+		
+		EngineerDaoImple engDao=new EngineerDaoImple();
+		try {
+			List<EngineerWithNumberOgProblem> list=engDao.AssignProblemToEngineer();
+			list.forEach(System.out::println);
+			sc.nextLine();
+			System.out.println("Enter Engineer Id");
+			String engId=sc.nextLine();
+			System.out.println("Enter Problem ID");
+			int pid=sc.nextInt();
+			engDao.ProblemAssigntoEngineer(engId, pid);
+			System.out.println("Problem Assign Successfully");
+		} catch (SomethingwentWent | NoresultFound e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+	}
 	
+	//view All rise Problem
 	public static void ViewAllRiseProblem() {
 		
 		ProblemDaoImple probdao=new ProblemDaoImple();
@@ -64,6 +86,7 @@ public class AdminUi {
 		}
 	}
 	
+	//Delete Engineer
 	public static void deleteEngineer(Scanner sc) {
 		EngineerDaoImple engDao=new EngineerDaoImple();
 	    try {
@@ -76,6 +99,7 @@ public class AdminUi {
 			System.out.println(e1.getMessage());
 		}
 	}
+	//display engineer
 	public static void displayEngineer() {
 		EngineerDaoImple engDao=new EngineerDaoImple();
 	    try {

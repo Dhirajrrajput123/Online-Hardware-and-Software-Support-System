@@ -26,6 +26,13 @@ public class EmployeeDaoImple  implements EmployeeDao{
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new SomethingwentWent("Some thing wend wrong");
+		}finally {
+			try {
+				DBUtils.closeconnection(con);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -54,6 +61,13 @@ public class EmployeeDaoImple  implements EmployeeDao{
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new SomethingwentWent("Some thing wend wrong");
+		}finally {
+			try {
+				DBUtils.closeconnection(con);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}

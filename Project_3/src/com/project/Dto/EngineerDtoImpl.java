@@ -13,6 +13,14 @@ public class EngineerDtoImpl implements EngineerDto {
 		this.password = password;
 		this.category = category;
 	}
+	
+	public EngineerDtoImpl(String username, String password) {
+		this.Enid = null;
+		this.username = username;
+		this.password = password;
+		this.category = null;
+	}
+
 	@Override
 	public String getEnid() {
 		return Enid;

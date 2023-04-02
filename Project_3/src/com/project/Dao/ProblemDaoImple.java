@@ -40,6 +40,13 @@ public class ProblemDaoImple implements ProblemDao {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new SomethingwentWent("Some thing went wrong");
+		}finally {
+			try {
+				DBUtils.closeconnection(con);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return list;
@@ -59,6 +66,13 @@ public class ProblemDaoImple implements ProblemDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new SomethingwentWent("Some thing went wrong");
+		}finally {
+			try {
+				DBUtils.closeconnection(con);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -82,6 +96,13 @@ public class ProblemDaoImple implements ProblemDao {
 				ps.executeUpdate();
 			} catch (ClassNotFoundException | SQLException e) {
 				throw new SomethingwentWent("Some thing went wrong");
+			}finally {
+				try {
+					DBUtils.closeconnection(con);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		
 	}
@@ -171,9 +192,11 @@ public class ProblemDaoImple implements ProblemDao {
 			else {
 				
 				rs.next();
-				if(rs.getString(5).equals("0")) {
-					System.out.println("hello");
+				if(rs.getString(4).equals("0")) {
 					return "Your Problem resolve Soon";
+				}
+				else if(rs.getString(4).equals("1")) {
+					return "Problem resolve successfully";
 				}
 				else {
 					return "Your Problem is in prograss";
@@ -182,7 +205,43 @@ public class ProblemDaoImple implements ProblemDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new SomethingwentWent("Something went wrong");
+		}finally {
+			try {
+				DBUtils.closeconnection(con);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+	}
+
+	@Override
+	public void updateProblemStatus(int pid) throws SomethingwentWent,NoresultFound {
+		
+        Connection con=null;
+		
+		try {
+			con=DBUtils.get_connection();
+			String query="update problem set pstatus=1 where pid=? and Enid=?";
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setInt(1, pid);
+			ps.setString(2, StaticVariable.engineer__Id);
+			int n=ps.executeUpdate();
+			if(n==0) {
+				throw new NoresultFound("no query present ");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new SomethingwentWent("Something went wrong");
+		}finally {
+			try {
+				DBUtils.closeconnection(con);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 

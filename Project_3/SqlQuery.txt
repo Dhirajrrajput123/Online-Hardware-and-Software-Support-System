@@ -59,8 +59,99 @@ query:- Create the database
   insert into employee (username,password) values('difho','pedeflcw');
   
   
-  
-  add problem into problem table
+Admin Task==============================
+
+    Add engineer in the table
+             query="insert into engineer values (?,?,?,?)"  
+             ps.setString(1, eng.getEnid());
+			 ps.setString(2, eng.getUsername());
+			 ps.setString(3, eng.getPassword());
+			 ps.setString(4, eng.getCategory());
+             
+    Display All Engineer
+            String query="select * from engineer";
+            
+    Delete Engineer
+            String query="delete from engineer where Enid=?";
+            
+    See all Rise Problem
+            String query="select problem_name,category,pstatus,Enid,empid from problem";
+            
+    assign any problem to any Engineer.
+            String query="update problem  set Enid=? where pid=?";
+            
+      
+      
+Engineer Task===========================================
+
+     log in Engineer:
+                     String query="select Enid from engineer where username=? and password=? ";
+
+     view the Problem Assign to him by Admin
+                       String query="select * from problem  where empid=? pstatus=0";
+                       
+     update problem status:
+                       String query="update problem set pstatus=1 where pid=? and Enid=?";
+                       
+     see All problem Attended by engineer
+                        String query="select * from problem  where empid=?;
+                        
+     change Password:
+                        String query="update engineer set password=? where Enid=? ";
+                                                                                 	                                                  
+             
+ EMployee task=================================
+             
+       log in Employee:
+                String query="select empid from employee where username=? and password=?";
+                       
+      add problem into problem table
+               String query="insert into problem (problem_name,category,pstatus,Enid,empid) values (?,?,?,?,?)";
                insert into problem (problem_name,category,pstatus,Enid,empid) values ('dc cewr','H',0,'0','7');
+      see problem status:
+               String query="select * from problem where pid=?";
+                        
+      see all problem create by him/her
+               String query="select * from problem  where empid=?";  
+               
+      change Password:
+               String query="update employee set password=? where empid=?";	
+               
+                               
+Create Employee Account:
+       
+       String query="insert into employee (username,password) values(?,?)";               
+               
+               
                   
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
                                   
