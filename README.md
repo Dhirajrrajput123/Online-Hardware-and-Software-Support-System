@@ -3,6 +3,8 @@
 #Online Hardware and Software Support System 
 
 
+![Screenshot (329)](https://user-images.githubusercontent.com/115461643/229334860-2e7b9bc1-7e85-4b9d-b3c0-ff880bb9182a.png)
+
 
 #Roles for the HOD:
 ->Login into the system
