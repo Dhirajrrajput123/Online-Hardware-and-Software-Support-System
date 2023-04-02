@@ -19,4 +19,6 @@ public interface ProblemDao {
 	
 	public String SeeProblemStatus(int pid) throws SomethingwentWent;
 	
+	public void updateProblemStatus(int pid) throws SomethingwentWent, NoresultFound;
+	
 }

@@ -4,7 +4,9 @@ import java.sql.SQLException;
 
 import com.project.Dao.DBUtils;
 import com.project.Dao.EmployeeDaoImple;
+import com.project.Dao.EngineerDaoImple;
 import com.project.Dao.StaticVariable;
+import com.project.Dto.EngineerDtoImpl;
 import com.project.Dto.employeeDtoimple;
 import com.project.Exception.NoresultFound;
 import com.project.Exception.SomethingwentWent;
@@ -33,16 +35,23 @@ public class UiMain {
 			String username=sc.nextLine();
 			System.out.println("enter Enginner password");
 			String password=sc.nextLine();		
-		     
-			EngineerUi.welcomeEngineer(sc,username);
+		    EngineerDtoImpl engDto=new EngineerDtoImpl(username, password);
+		    EngineerDaoImple engDao=new EngineerDaoImple();
+		    try {
+				engDao.loginEngineer(engDto);
+				System.out.println("Your Welcome ");
+				EngineerUi.welcomeEngineer(sc,username);
+			} catch (SomethingwentWent e) {
+				System.out.println(e.getMessage());
+			}
 	}
 		
 		//Employee signin
 		static void Employeelogin(Scanner sc) {
 			sc.nextLine();
-			System.out.println("Enter Engineer Username");
+			System.out.println("Enter Employee Username");
 			String employeename=sc.nextLine();
-			System.out.println("enter Enginner password");
+			System.out.println("enter Employee password");
 			String password=sc.nextLine();	
 			employeeDtoimple empDto=new employeeDtoimple(employeename, password);
 		
@@ -50,11 +59,12 @@ public class UiMain {
 			try {
 				empDao.EmployeeLoginAccout(empDto);
 				System.out.println("Log in successfully");
+				
+				EmployeeUi.welcomeEmployee(sc,employeename);
 //				System.out.println(StaticVariable.employee__Id);
 			} catch (SomethingwentWent | NoresultFound e) {
 				System.out.println(e.getMessage());
 			}
-			EmployeeUi.welcomeEmployee(sc,employeename);
 	}
 		static void registerEmployee(Scanner sc) {
 			
