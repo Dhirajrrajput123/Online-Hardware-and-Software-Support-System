@@ -9,6 +9,10 @@
 
 ![Logo](https://previews.123rf.com/images/stmool/stmool1908/stmool190800407/128586477-computer-repair-services-it-support-concept-software-development-system-administration-desktop.jpg)
 
+## TECH STACK
+- Java
+- MySQL(RDBMS)
+- JDBC
 
 
 ## Roles for the HOD:
