@@ -3,6 +3,9 @@
 # Online Hardware and Software Support System 
 
 
+- This Application based on **Dao** Pattern
+- Console base Application so no need to deploy
+
 ![Screenshot (329)](https://user-images.githubusercontent.com/115461643/229334860-2e7b9bc1-7e85-4b9d-b3c0-ff880bb9182a.png)
 
 
